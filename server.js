@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { Product_router } from "./routes/product_router.js";
 import { db_connection } from "./config/db_connection/db_connection.js";
+import { redisDatabaseConnection } from "./config/db_connection/redis_connection.js";
 
 
 dotenv.config();
@@ -27,4 +28,5 @@ if(process.env.NODE_ENV === 'production'){
 app.listen(port,()=>{
   console.log("Server running product at http://localhost:" + port);
   db_connection()
+  redisDatabaseConnection();
 })
